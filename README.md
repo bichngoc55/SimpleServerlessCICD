@@ -1,1 +1,1 @@
-# SimpleCICD
+# Just for CI/CD
