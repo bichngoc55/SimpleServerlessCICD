@@ -1,15 +1,20 @@
 const request = require("supertest");
-const app = require("../index");
+const { app, server } = require("../index.js");
 
 describe("API Tests", () => {
-  it("GET / endpoint works", async () => {
-    const response = await request(app).get("/");
-    expect(response.status).toBe(200);
+  afterAll(() => {
+    server.close();
   });
 
-  it("GET /health returns healthy status", async () => {
+  test("GET / endpoint works", async () => {
+    const response = await request(app).get("/");
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("message");
+  });
+
+  test("GET /health returns healthy status", async () => {
     const response = await request(app).get("/health");
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual({ status: "healthy" });
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toHaveProperty("status", "healthy");
   });
 });
