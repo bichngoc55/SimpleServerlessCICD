@@ -5,7 +5,7 @@ exports.lambdaHandler = async (event, context) => {
       body: JSON.stringify({
         message: "Hello World Omega33333!",
       }),
-      //  i love tiktok
+      //  i love tiktok 2
     };
   } catch (err) {
     return {
