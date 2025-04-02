@@ -10,6 +10,7 @@ phases:
   build:
     commands:
       - sam build 
+      - echo "ARTIFACT_BUCKET is $ARTIFACT_BUCKET"
       - sam package --s3-bucket $ARTIFACT_BUCKET --output-template-file packaged.yaml
 
   post_build:
