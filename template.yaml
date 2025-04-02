@@ -6,8 +6,6 @@ Description: Simple serverless app with Lambda and API Gateway
 Globals:
   Function:
     Runtime: nodejs18.x
-    Timeout: 10
-    MemorySize: 128
 
 Resources:
   HelloWorldFunction:
@@ -22,6 +20,9 @@ Resources:
           Properties:
             Path: /hello
             Method: GET
+      AutoPublishAlias: live
+      DeploymentPreference:
+        Type: Linear10PercentEvery1Minute
 
 Outputs:
   ApiUrl:
