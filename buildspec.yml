@@ -11,7 +11,7 @@ phases:
     commands:
       - sam build 
       - echo "ARTIFACT_BUCKET is $ARTIFACT_BUCKET"
-      - sam package --s3-bucket $ARTIFACT_BUCKET --output-template-file packaged.yaml
+      - sam package --s3-bucket pipeline-bucket-cicd-uit --output-template-file packaged.yaml
 
   post_build:
     commands:
