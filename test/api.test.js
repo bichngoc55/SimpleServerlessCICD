@@ -1,8 +1,5 @@
-const request = require('supertest');
-const {
-  app,
-  server
-} = require('../index.js');
+const request = require("supertest");
+const { app, server } = require("../index.js");
 
 describe("API Tests", () => {
   afterAll(() => {
@@ -21,3 +18,5 @@ describe("API Tests", () => {
     expect(response.body).toHaveProperty("status", "healthy");
   });
 });
+// test("GET /api/hello returns hello message", async () => {
+//   const response = await request(app).get("/api/hello");
