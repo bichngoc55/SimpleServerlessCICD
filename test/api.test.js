@@ -1,23 +1,15 @@
-const request = require('supertest');
 const {
-  app,
-  server
-} = require('../index.js');
+  lambdaHandler
+} = require('../src/app'); // thay đường dẫn nếu khác
 
-describe("API Tests", () => {
-  afterAll(() => {
-    server.close();
-  });
+describe('lambdaHandler', () => {
+  test('should return 200 and Hello World message', async () => {
+    const result = await lambdaHandler({}, {});
 
-  test("GET / endpoint works", async () => {
-    const response = await request(app).get("/");
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toHaveProperty("message");
-  });
+    expect(result.statusCode).toBe(200);
 
-  test("GET /health returns healthy status", async () => {
-    const response = await request(app).get("/health");
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toHaveProperty("status", "healthy");
+    const body = JSON.parse(result.body);
+    expect(body).toHaveProperty('message');
+    expect(body.message).toBe("Hello World Omega333433!");
   });
 });
