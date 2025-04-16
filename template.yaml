@@ -21,25 +21,9 @@ Resources:
             Method: GET
       AutoPublishAlias: live
       DeploymentPreference:
-        Type: LambdaCanary10Percent5Minutes
-        Alarms:
-          - !Ref LambdaErrorAlarm
-        Rollback: true
+        Type: LambdaCanary10Percent5Minutes  
 
-  LambdaErrorAlarm:
-    Type: AWS::CloudWatch::Alarm
-    Properties:
-      AlarmName: HelloWorldFunctionErrorAlarm
-      MetricName: Errors
-      Namespace: AWS/Lambda
-      Statistic: Sum
-      Period: 60
-      EvaluationPeriods: 1
-      Threshold: 1
-      ComparisonOperator: GreaterThanOrEqualToThreshold
-      Dimensions:
-        - Name: FunctionName
-          Value: !Ref HelloWorldFunction
+ 
 
 Outputs:
   ApiUrl:
