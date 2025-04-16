@@ -21,7 +21,7 @@ Resources:
             Method: GET
       AutoPublishAlias: live
       DeploymentPreference:
-        Type: Linear10PercentEvery1Minute
+        Type: LambdaCanary10Percent5Minutes
         Alarms:
           - !Ref LambdaErrorAlarm
         Rollback: true
